@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DEAD Enterprise</title>
+  <style>
+    @font-face {
+      font-family: 'Neue Montreal';
+      src: url('NeueMontreal-Regular.otf') format('opentype');
+      font-weight: 400;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'Neue Montreal';
+      src: url('NeueMontreal-Medium.otf') format('opentype');
+      font-weight: 500;
+      font-style: normal;
+    }
+html, body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .hero-banner {
+      position: relative;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      overflow: hidden;
+      width: 100%;
+    }
+
+    .hero-bg {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 1;
+    }
+
+    .hero-overlay {
+      position: relative;
+      z-index: 2;
+      padding: 1.5rem;
+      box-sizing: border-box;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding-bottom: 6rem;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.6) 30%, rgba(0,0,0,0.8) 100%);
+    }
+
+    .hero-logo {
+      width: 120px;
+      margin-bottom: 1rem;
+    }
+
+    .hero-text {
+      color: #fff;
+      max-width: 100%;
+      margin-top: auto;
+      text-align: center;
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .hero-text h1 {
+      font-size: 2.2rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .hero-text h1 span {
+      color: #d6d6d6;
+      font-weight: 400;
+    }
+
+    .hero-text h1 strong {
+      color: white;
+      font-weight: 600;
+    }
+
+    .hero-text p {
+      color: #e0e0e0;
+      margin-bottom: 1.5rem;
+      font-size: 1rem;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: flex-start;
+    }
+
+    .btn-outline,
+    .btn-solid {
+      padding: 0.6rem 1.4rem;
+      font-weight: 500;
+      border-radius: 30px;
+      font-size: 0.95rem;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid white;
+      color: white;
+    }
+
+    .btn-solid {
+      background: #ff3f73;
+      color: white;
+      border: none;
+    }
+
+    @media (min-width: 768px) {
+      .hero-text h1 {
+        font-size: 3.2rem;
+        text-align: center;
+      }
+
+      .hero-text p {
+        font-size: 1.2rem;
+      }
+
+      .hero-logo {
+        width: 150px;
+      }
+    }
+
+    :root {
+      --green: #00ffa3;
+      --bg: #ffffff;
+      --text: #000000;
+      --muted: #444444;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Neue Montreal', sans-serif;
+    }
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow-x: hidden;
+    }
+    h1 {
+      font-size: 3.5rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+      text-align: left;
+    }
+    h2 {
+      font-size: 2.2rem;
+      margin-top: 4rem;
+      margin-bottom: 1rem;
+      text-align: left;
+      font-weight: 500;
+    }
+    p {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 600px;
+      text-align: left;
+      margin-bottom: 2rem;
+      font-weight: 400;
+      line-height: 1.8;
+    }
+    .event-dates {
+      margin-top: 1rem;
+      font-size: 1rem;
+      font-weight: 500;
+      text-align: center;
+      color: var(--green);
+    }
+    .section {
+      width: 100%;
+      max-width: 800px;
+      margin: 4rem auto;
+      text-align: left;
+    }
+    .cta-box {
+      background: #f4f4f4;
+      padding: 2rem;
+      border-radius: 10px;
+      margin: 2rem 0;
+    }
+    .cta-box h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      color: #000;
+    }
+    .cta-box p {
+      color: #333;
+      margin-bottom: 1rem;
+    }
+    .cta-box a {
+      display: inline-block;
+      padding: 0.6rem 1.2rem;
+      background: #000;
+      color: #fff;
+      border-radius: 5px;
+      font-weight: 500;
+      text-decoration: none;
+    }
+    footer {
+      margin-top: 4rem;
+      color: #666;
+      font-size: 0.9rem;
+      text-align: center;
+    }
+
+@media (max-width: 768px) {
+  body {
+    padding: 0;
+  }
+
+  h1 {
+    font-size: 2.2rem;
+    text-align: left;
+  }
+
+  h2 {
+    font-size: 1.6rem;
+    text-align: left;
+  }
+
+  p {
+    font-size: 0.95rem;
+    text-align: left;
+  }
+
+  .event-dates {
+    font-size: 0.9rem;
+    text-align: left;
+  }
+
+  .cta-box {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .cta-box h3 {
+    font-size: 1.2rem;
+  }
+
+  .cta-box a {
+    font-size: 0.95rem;
+  }
+
+  .section {
+    margin: 3rem 0;
+  }
+
+  .section img {
+    max-width: 100%;
+    height: auto !important;
+  }
+
+  footer {
+    font-size: 0.8rem;
+  }
+
+  footer div img {
+    width: 20px !important;
+  }
+
+  .section > div {
+    justify-content: flex-start !important;
+  }
+
+  .hero-text h1 {
+    font-size: 2rem;
+    text-align: left;
+  }
+
+  .hero-buttons {
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 0.75rem;
+  }
+
+  .btn-outline {
+    border: 2px solid white;
+    background-color: transparent;
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border-radius: 999px;
+    padding: 0.5rem 1.3rem;
+  }
+
+  .btn-solid {
+    background-color: #ff3f73;
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border: none;
+    border-radius: 999px;
+    padding: 0.5rem 1.6rem;
+  }
+}
+
+    .nav-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 10;
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(8px);
+    }
+
+    .nav-logo {
+      width: 140px;
+    }
+
+    .nav-menu .menu-icon {
+      width: 26px;
+      height: 2px;
+      background: white;
+      position: relative;
+    }
+
+    .nav-menu .menu-icon::before,
+    .nav-menu .menu-icon::after {
+      content: '';
+      position: absolute;
+      width: 26px;
+      height: 2px;
+      background: white;
+      left: 0;
+    }
+
+    .nav-menu .menu-icon::before {
+      top: -8px;
+    }
+
+    .nav-menu .menu-icon::after {
+      top: 8px;
+    }
+
+    .sidebar {
+      position: fixed;
+      top: 0;
+      right: -250px;
+      width: 250px;
+      height: 100vh;
+      background: #000;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      padding: 2rem 1.5rem;
+      gap: 1.5rem;
+      transition: right 0.3s ease;
+      z-index: 20;
+    }
+
+    .sidebar a {
+      color: white;
+      text-decoration: none;
+      font-size: 1.2rem;
+      font-weight: 500;
+    }
+
+    .sidebar.open {
+      right: 0;
+    }
+
+    .close-btn {
+      align-self: flex-end;
+      font-size: 2rem;
+      color: white;
+      cursor: pointer;
+      margin-bottom: 2rem;
+    }
+
+    .event-carousel {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      gap: 1rem;
+      margin-top: 2rem;
+      scroll-behavior: smooth;
+    }
+
+    .event-carousel::-webkit-scrollbar {
+      display: none;
+    }
+
+    .event-slide {
+      scroll-snap-align: start;
+      flex: 0 0 85%;
+      max-width: 320px;
+      background-size: cover;
+      background-position: center;
+      border-radius: 20px;
+      height: 360px;
+      display: flex;
+      align-items: flex-end;
+      padding: 1rem;
+      position: relative;
+    }
+
+    .event-content {
+      background: rgba(0, 0, 0, 0.65);
+      border-radius: 14px;
+      padding: 1rem 1.5rem;
+      color: white;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      width: 100%;
+      max-width: 320px;
+    }
+
+    .event-content h3 {
+      font-size: 1rem;
+      font-weight: 500;
+      margin: 0;
+      white-space: nowrap;
+    }
+
+    .event-content .btn-solid {
+      background-color: #ff3f73;
+      color: white;
+      font-weight: 600;
+      border-radius: 999px;
+      padding: 0.5rem 1.2rem;
+      text-align: center;
+      width: fit-content;
+      font-size: 0.95rem;
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav-bar">
+    <img src="images/DE_Word White.svg" alt="Logo" class="nav-logo">
+    <div class="nav-menu">
+      <div class="menu-icon"></div>
+    </div>
+  </nav>
+  <div class="sidebar" id="sidebar">
+    <div class="close-btn" id="closeSidebar">&times;</div>
+    <a href="#">Homee</a>
+    <a href="#">Events</a>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+  </div>
+  <section class="hero-banner">
+    <img src="images/hero-banner.jpg" alt="Hero Background" class="hero-bg" />
+    <div class="hero-overlay">
+      <div class="hero-text">
+        <h1><span>Hello,</span> <strong>Beautiful Creatures</strong></h1>
+        <p>Welcome to the realest events in town.</p>
+        <div class="hero-buttons">
+          <a href="#" class="btn-outline">OUR EVENTS</a>
+          <a href="#" class="btn-solid">RSVP</a>
+        </div>
+      </div>
+      <div class="event-carousel">
+        <div class="event-slide" style="background-image: url('images/28 June.png');">
+          <div class="event-content">
+            <h3>TICKETS LIVE  |  28th JUNE</h3>
+            <a href="#" class="btn-solid">RSVP</a>
+          </div>
+        </div>
+        <div class="event-slide" style="background-image: url('images/15 Feb.png');">
+          <div class="event-content">
+            <h3>TICKETS LIVE | 15th FEB</h3>
+            <a href="#" class="btn-solid">RSVP</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+    <div class="section">
+      <h2>so, wtf is DEAD Enterprise?</h2>
+      <p>DEAD Enterprise is a no-bullsh*t events platform. We're the blunt, real, unfiltered friend that exists as a stepping stone for people who want their voices heard and entrepreneurs who want a platform to connect. ForReal. to waste your time.</p>
+    </div>
+
+    <div class="section">
+      <div class="cta-box">
+        <h3>Join our<br>Whatsapp Community</h3>
+        <p>We’ve got a bunch of yappers on this chat talking about absolutely useless things half the time but it’s active, respectful and everyone’s always there for you.</p>
+        <a href="#">Join Now</a>
+      </div>
+
+      <div class="cta-box">
+        <h3>Follow our<br>socials on your doomscroll machine</h3>
+        <p>We post pictures of you ‘cause nobody else will.</p>
+        <a href="#">Follow our<br>Instagram</a>
+      </div>
+    </div>
+
+    <div class="section" style="text-align: left;">
+      <h2 style="margin-bottom: 1rem;">Upcoming Posters</h2>
+      <div style="display: flex; flex-wrap: wrap; gap: 1rem; justify-content: flex-start; margin-top: 1.5rem;">
+        <img src="images/15 Feb.png" alt="15 Feb Poster" style="height: 200px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); padding: 0.25rem; background: #fff;">
+        <img src="images/28 June.png" alt="28 June Poster" style="height: 200px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); padding: 0.25rem; background: #fff;">
+        <img src="images/03 May.png" alt="03 May Poster" style="height: 200px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); padding: 0.25rem; background: #fff;">
+        <img src="images/19 Jan.png" alt="19 Jan Poster" style="height: 200px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); padding: 0.25rem; background: #fff;">
+        <img src="images/20 June.png" alt="20 June Poster" style="height: 200px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); padding: 0.25rem; background: #fff;">
+      </div>
+    </div>
+
+    <footer>
+      <p>Copyright &copy; DEAD Enterprise</p>
+      <div style="margin-top: 1rem;">
+        <img src="images/ig.svg" alt="Instagram" style="width: 24px; margin-right: 0.5rem;">
+        <img src="images/tt.svg" alt="Twitter" style="width: 24px; margin-right: 0.5rem;">
+        <img src="images/li.svg" alt="LinkedIn" style="width: 24px; margin-right: 0.5rem;">
+        <img src="images/gmail.svg" alt="Gmail" style="width: 24px;">
+      </div>
+    </footer>
+  </div>
+<script>
+    const menuIcon = document.querySelector('.menu-icon');
+    const sidebar = document.getElementById('sidebar');
+
+    menuIcon.addEventListener('click', () => {
+      sidebar.classList.toggle('open');
+    });
+
+    const closeBtn = document.getElementById('closeSidebar');
+    closeBtn.addEventListener('click', () => {
+      sidebar.classList.remove('open');
+    });
+  </script>
+</body>
+</html>
